@@ -17,12 +17,13 @@ func main() {
 	smtpServer := server.NewSMTP("smtp.gmail.com", "587", os.Getenv("SENDER_EMAIL"), os.Getenv("SENDER_PASSWORD"), "")
 
 	email := email.Params{
-		SenderName: "SMTP Server",
-		Sender:     "example@example.com",
-		To:         []string{"example@example.com"},
-		Cc:         []string{"example@example.com"},
-		Subject:    "Test email with attachment",
-		Body:       "This is a test email with attachment.",
+		SenderName:      "SMTP Server",
+		Sender:          "example@example.com",
+		To:              []string{"example@example.com"},
+		Cc:              []string{"example@example.com"},
+		Subject:         "Test email with attachment",
+		Body:            "This is a test email with attachment.",
+		BodyContentType: "text/plain",
 		Attachments: []email.Attachment{
 			{
 				FileName: "file.pdf",

@@ -55,6 +55,7 @@ func (m *Params) Bytes() []byte {
 		buf.WriteString("\r\n--" + boundary + "\r\n")
 	}
 
+	buf.WriteString(fmt.Sprintf("Content-Type: %s; charset=utf-8\r\n\r\n", m.BodyContentType))
 	buf.WriteString(m.Body)
 	buf.WriteString("\r\n")
 
