@@ -2,30 +2,27 @@ package main
 
 import (
 	_ "embed"
+	"log"
+	"os"
 	"smtp/email"
 	"smtp/server"
-)
 
-const (
-	senderEmail    = "smtpmateo@gmail.com"
-	senderPassword = "rdej kqnl pczk ixve"
-	host           = "smtp.gmail.com"
-	port           = "587"
+	"github.com/joho/godotenv"
 )
 
 //go:embed file.pdf
 var file []byte
 
 func main() {
-	smtpServer := server.NewSMTP(host, port, senderEmail, senderPassword, "")
+	smtpServer := server.NewSMTP("smtp.gmail.com", "587", os.Getenv("SENDER_EMAIL"), os.Getenv("SENDER_PASSWORD"), "")
 
 	email := email.Params{
-		SenderName: "Mateo Caicedo",
-		Sender:     "caicedomateo9@gmail.com",
-		To:         []string{"caicedomateo9@gmail.com"},
-		Cc:         []string{"mcaicedo@wawand.co"},
-		Subject:    "La chapa que vibra",
-		Body:       "Hola, este es un mensaje de prueba",
+		SenderName: "SMTP Server",
+		Sender:     "example@example.com",
+		To:         []string{"example@example.com"},
+		Cc:         []string{"example@example.com"},
+		Subject:    "Test email with attachment",
+		Body:       "This is a test email with attachment.",
 		Attachments: []email.Attachment{
 			{
 				FileName: "file.pdf",
@@ -39,4 +36,11 @@ func main() {
 		panic(err)
 	}
 
+}
+
+func init() {
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
 }
