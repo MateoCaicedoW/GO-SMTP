@@ -7,9 +7,11 @@ import (
 	"mime"
 	"net/smtp"
 	"path/filepath"
-	"smtp/server"
+
 	"strings"
 	"time"
+
+	"github.com/MateoCaicedoW/GO-SMTP/server"
 )
 
 type Params struct {

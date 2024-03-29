@@ -4,9 +4,9 @@ import (
 	_ "embed"
 	"log"
 	"os"
-	"smtp/email"
-	"smtp/server"
 
+	"github.com/MateoCaicedoW/GO-SMTP/email"
+	"github.com/MateoCaicedoW/GO-SMTP/server"
 	"github.com/joho/godotenv"
 )
 
